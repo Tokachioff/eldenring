@@ -6,8 +6,6 @@
   <title>Elden Game - Jouer</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --gold:   #c9a84c;
       --gold2:  #f0d080;
@@ -60,19 +58,6 @@
       overflow: hidden;
     }
 
-    .frame::before, .frame::after,
-    .frame-inner::before, .frame-inner::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border-color: var(--gold);
-      border-style: solid;
-    }
-
-    .frame::before  { top: -1px;    left: -1px;  border-width: 1px 0 0 1px; }
-    .frame::after   { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
-
     .frame-inner {
       position: absolute;
       inset: 0;
@@ -80,9 +65,6 @@
       align-items: center;
       justify-content: center;
     }
-
-    .frame-inner::before { top: -1px;    right: -1px; border-width: 1px 1px 0 0; }
-    .frame-inner::after  { bottom: -1px; left: -1px;  border-width: 0 0 1px 1px; }
 
     .placeholder {
       font-family: 'Cinzel', serif;
@@ -207,19 +189,24 @@
   <a href="index.html" class="back">← Retour</a>
 
   <div class="frame">
+
+    <img class="frame-bg" src="" alt="" >
+
     <div class="frame-inner">
+
       <div class="placeholder" id="placeholder">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-        </svg>
-        CHERCHE UN BOSS<br>OU UN ITEM
+        IMAGE DU BOSS A TROUVER
       </div>
+
       <div id="result-loading">CONSULTATION DES ARCHIVES…</div>
+
       <div id="result-card">
         <img id="result-img" src="" alt="">
         <div id="result-name"></div>
       </div>
+
     </div>
+
   </div>
 
   <div class="desc-box">
@@ -231,10 +218,8 @@
     <button id="search-btn">CHERCHER</button>
   </div>
 
-  <script src="../models/EldenModel.js"></script>
-  <script src="../controllers/EldenController.js"></script>
-  <script>
-    PlayController.init();
-  </script>
+  <script type="module" src="../main.js"></script>
+
+
 </body>
 </html>
