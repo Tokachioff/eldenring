@@ -194,13 +194,6 @@
   <script src="../models/EldenModel.js"></script>
   <script src="../controllers/EldenController.js"></script>
   <script>
-    EldenModel.categories.forEach(cat => {
-      const btn = document.createElement('button');
-      btn.className = 'cat-btn';
-      btn.dataset.cat = cat.key;
-      btn.textContent = cat.label;
-      document.querySelector('.sidebar').appendChild(btn);
-    });
 
     DocController.init();
   </script>
