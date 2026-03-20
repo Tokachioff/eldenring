@@ -1,0 +1,187 @@
+:root {
+  --gold:   #c9a84c;
+  --gold2:  #f0d080;
+  --dark:   #0a0806;
+  --dark2:  #12100d;
+  --dark3:  #1c1812;
+  --ash:    #5a5040;
+  --text:   #d4c9a8;
+  --border: #3a3020;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--dark);
+  color: var(--text);
+}
+
+#home-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../../img/elden.jpg');
+  filter: brightness(0.35) saturate(0.6);
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body layout */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  position: relative;
+}
+
+/* Header */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  z-index: 2;
+}
+
+header a.back {
+  font-family: 'Cinzel', serif;
+  font-size: 1.75rem;
+  letter-spacing: 0.15em;
+  color: var(--ash);
+  text-decoration: none;
+  padding-left: 1.5rem;
+  padding-top: 1.5rem;
+}
+header a.back:hover { color: var(--gold); }
+
+/* Score */
+#score-container {
+  font-family: 'Cinzel', serif;
+  font-size: 1.75rem;
+  color: var(--gold);
+  z-index: 2;
+}
+
+/* Cadre du boss */
+.frame {
+  width: clamp(260px, 50vw, 480px);
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  background: var(--dark2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+#frame-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Description du boss */
+.desc-box {
+  width: clamp(260px, 32vw, 400px);
+  min-height: 3.5rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.8;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Barre de recherche */
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: clamp(260px, 40vw, 480px);
+  border: 1px solid var(--border);
+  background: var(--dark2);
+  z-index: 2;
+}
+
+#search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.85rem 1.2rem;
+}
+
+#search-input::placeholder {
+  color: var(--ash);
+  font-style: italic;
+}
+
+#search-btn {
+  background: transparent;
+  border: none;
+  border-left: 1px solid var(--border);
+  color: var(--gold);
+  cursor: pointer;
+  padding: 0.85rem 1.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+}
+
+#search-btn:hover {
+  background: rgba(201,168,76,0.08);
+}
+
+/* Resultats */
+#result-card {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#result-card.visible { display: flex; }
+
+#result-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+#result-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  padding: 1.5rem 1rem 0.75rem;
+  text-align: center;
+}
+
+#result-loading {
+  display: none;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--ash);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--border); }

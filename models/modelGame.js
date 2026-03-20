@@ -22,6 +22,12 @@ export class Game {
    */
   #bossList;
 
+  /**
+   * Liste des boss retournés par l'API.
+   * @type {Object[]}
+   */
+  #score;
+
 
   /**
    * Constructeur de la classe Game.
@@ -31,6 +37,7 @@ export class Game {
     this.#input = "";
     this.#boss = null;
     this.#bossList = [];
+    this.#score = 0;
 
   }
 
@@ -86,6 +93,22 @@ export class Game {
    */
   getBossList() {
     return this.#bossList;
+  }
+
+    /**
+   * Retourne le score du jeu.
+   * @returns {int}
+   */
+  getScore() {
+    return this.#score;
+  }
+
+      /**
+   * Augmente le score du jeu.
+   * @returns {int}
+   */
+  AddScore() {
+    this.#score += 1;
   }
 
 }

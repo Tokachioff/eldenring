@@ -21,6 +21,8 @@ export class GameController {
 
     this.#game = new Game();
 
+    this.configureBoss();
+
     this.initEvents();
 
   }
@@ -33,23 +35,47 @@ export class GameController {
 
     const button = document.getElementById("search-btn");
     const input = document.getElementById("search-input");
-    const img = document.getElementById("frame-bg");
+    const score = document.getElementById("score");
 
-    //charger les données depuis l'api
+    score.textContent = this.#game.getScore();
 
     button.addEventListener("click", () => {
-      this.searchBoss();
+      //this.searchBoss();
+      this.#game.AddScore();
+      score.textContent = this.#game.getScore();
     });
 
     input.addEventListener("keypress", (event) => {
       if (event.key === "Enter") {
-        this.searchBoss();
+        //this.searchBoss();
       }
     });
 
   }
 
+  async configureBoss() {
+    const img = document.getElementById("frame-bg");
 
+    const response = await fetch(`https://eldenring.fanapis.com/api/bosses`);
+    const data = await response.json();
+    const bossList = data.data.map(boss => new Boss(boss));
+    this.#game.setBossList(bossList);
+
+    const randomIndex = Math.floor(Math.random() * bossList.length);
+    const randomBoss = bossList[randomIndex];
+    this.#game.setBoss(randomBoss);
+
+    img.src = this.#game.getBoss().image;
+
+    const desc = document.getElementById("result-desc");
+    desc.textContent = this.#game.getBoss().description;
+  }
+
+
+
+
+
+  
   /**
    * Lance la recherche d'un boss via l'API.
    */
@@ -63,11 +89,9 @@ export class GameController {
 
     this.#game.setInput(input);
 
-    const url = `https://eldenring.fanapis.com/api/bosses?name=${input}`;
-
     try {
 
-      const response = await fetch(url);
+      const response = await fetch(`https://eldenring.fanapis.com/api/bosses?name=${input}`);
 
       const data = await response.json();
 
