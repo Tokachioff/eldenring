@@ -181,6 +181,60 @@ header a.back:hover { color: var(--gold); }
   color: var(--ash);
 }
 
+#suggestions {
+  width: clamp(260px, 40vw, 480px);
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.suggestion-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: 'EB Garamond', serif;
+}
+
+.suggestion-item:hover {
+  background: rgba(201,168,76,0.1);
+  color: var(--gold);
+}
+
+.search-container {
+  z-index: 2;
+}
+
+#feedback {
+  margin-top: 0.8rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+/* Mauvaise réponse */
+.error {
+  color: #b84a4a;
+}
+
+/* Bonne réponse */
+.success {
+  color: #4CAF50;
+}
+
+/* caché */
+.hidden {
+  opacity: 0;
+}
+
+/* visible */
+.visible {
+  opacity: 1;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--dark); }

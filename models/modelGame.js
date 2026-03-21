@@ -107,7 +107,7 @@ export class Game {
    * Augmente le score du jeu.
    * @returns {int}
    */
-  AddScore() {
+  addScore() {
     this.#score += 1;
   }
 

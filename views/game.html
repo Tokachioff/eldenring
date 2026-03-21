@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elden Game - Jouer</title>
+  <title>Elden Game - Play</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/game.css">
 </head>
@@ -13,7 +13,7 @@
 <body>
   <header>
     <!-- Bouton retour -->
-    <a href="index.html" class="back">← Retour</a>
+    <a href="index.html" class="back">← Back</a>
   </header>
 
   <div id="home-bg"></div>
@@ -34,9 +34,13 @@
   </div>
 
   <!-- Barre de recherche -->
-  <div class="search-bar">
-    <input id="search-input" type="text" placeholder="Ex : Malenia, Ancestral Spirit…">
-    <button id="search-btn">CHERCHER</button>
+  <div id="feedback" class="hidden"></div>
+  <div class="search-container">
+    <div class="search-bar">
+      <input id="search-input" type="text" placeholder="Ex : Malenia, Ancestral Spirit…">
+      <button id="search-btn">SEARCH</button>
+    </div>
+    <div id="suggestions"></div>
   </div>
 
   <!-- Script principal -->
