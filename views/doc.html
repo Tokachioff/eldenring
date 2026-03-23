@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elden Game - Documentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/doc.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-back">← Back</a>
+      <div class="sidebar-title">Contents</div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search in category...">
+      <button id="fav-star-btn" class="fav-star" disabled>☆</button>
+      <button id="search-btn" disabled>🔎 SEARCH</button>
+    </div>
+
+    <div class="favorites-section">
+      <div class="favorites-title">Favorite searches</div>
+      <ul class="favorites-list" id="favorites-list"></ul>
+    </div>
+
+    <div id="doc-loading" style="display:none; text-align:center; padding: 3rem 0;">
+      <img src="https://cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif" alt="Loading..." style="width:48px; opacity:0.6;">
+    </div>
+
+    <div id="doc-content">
+      <div class="doc-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <p>SELECT A CATEGORY OR SEARCH</p>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../models/modelDoc.js"></script>
+  <script src="../controllers/DocController.js"></script>
+  <script>
+    DocController.init();
+  </script>
+
+</body>
+</html>
