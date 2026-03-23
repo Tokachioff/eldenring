@@ -215,6 +215,50 @@ header a.back:hover { color: var(--gold); }
   z-index: 2;
 }
 
+/*history bouton*/
+.history-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--border);
+  background: var(--dark2);
+  transition: all 0.2s ease;
+  position: relative;
+  margin: 0.8rem 1.2rem 0rem;
+}
+
+.history-btn:hover {
+  background: rgba(201,168,76,0.08);
+  color: var(--gold2);
+  border-color: var(--gold);
+}
+
+.history-btn::before,
+.history-btn::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--gold);
+}
+
+.history-btn::before {
+  top: -3px;
+  left: -3px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.history-btn::after {
+  bottom: -3px;
+  right: -3px;
+  border-left: none;
+  border-top: none;
+}
+
 /* Mauvaise réponse */
 .error {
   color: #b84a4a;

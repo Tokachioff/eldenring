@@ -68,8 +68,14 @@ export class GameController {
       let bossList = this.#game.getBossList();
 
       const randomIndex = Math.floor(Math.random() * bossList.length);
-      const randomBoss = bossList[randomIndex];
-
+      let randomBoss = bossList[randomIndex];
+      
+      //verification que le boss a bien une image associée
+      while (randomBoss.image == null) {
+        const randomIndex = Math.floor(Math.random() * bossList.length);
+        randomBoss = bossList[randomIndex];
+      }
+      
       this.#game.setBoss(randomBoss);
 
       img.src = this.#game.getBoss().image;
@@ -120,30 +126,51 @@ export class GameController {
         container.innerHTML = "";
 
         // vérifier si c'est le bon boss
-        if (this.checkAnswer(boss)){
-          document.getElementById("search-input").value = "";
-        } 
+        this.checkAnswer(boss);
+        
+        document.getElementById("search-input").value = "";
       });
 
       container.appendChild(div);
     });
   }
 
+    /**
+   * Vérifie si c'est le boss à trouver.
+   */
   checkAnswer(selectedBoss) {
 
     const scoreElement = document.getElementById("score");
     const feedback = document.getElementById("feedback");
 
+    //Ajout d'une tentative
+    this.#game.addNbTentative();
+
     // boss à deviner
     const targetBoss = this.#game.getBoss();
 
     if (selectedBoss.name === targetBoss.name) {
-      
-      this.#game.addScore();
-      scoreElement.textContent = this.#game.getScore();
 
       feedback.textContent = "CORRECT";
+      feedback.classList.remove("error", "visible");
       feedback.classList.add("success", "visible");
+
+      //sauvegarde du boss dans local storage
+      const history = JSON.parse(localStorage.getItem("bossHistory")) || [];
+
+      history.push({
+        name: this.#game.getBoss().name,
+        image: this.#game.getBoss().image,
+        description: this.#game.getBoss().description,
+        date: new Date().toLocaleString(),
+        tentative: this.#game.getNbTentative(),
+        points: this.#game.addScore()
+      });
+      
+      localStorage.setItem("bossHistory", JSON.stringify(history));
+
+      scoreElement.textContent = this.#game.getScore();
+      this.#game.resetNbTentative();
 
       // nouveau boss à deviner
       this.chooseBoss();
@@ -153,6 +180,7 @@ export class GameController {
 
       // Mauvaise réponse
       feedback.textContent = "INCORRECT";
+      feedback.classList.remove("success", "visible");
       feedback.classList.add("error", "visible");
 
       return false;

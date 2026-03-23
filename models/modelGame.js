@@ -23,10 +23,16 @@ export class Game {
   #bossList;
 
   /**
-   * Liste des boss retournés par l'API.
-   * @type {Object[]}
+   * Score du joueur.
+   * @type {int}
    */
   #score;
+
+    /**
+   * Nombre de tentative du joueur.
+   * @type {int}
+   */
+  #nbTentative;
 
 
   /**
@@ -38,6 +44,7 @@ export class Game {
     this.#boss = null;
     this.#bossList = [];
     this.#score = 0;
+    this.#nbTentative = 0;
 
   }
 
@@ -104,11 +111,46 @@ export class Game {
   }
 
       /**
-   * Augmente le score du jeu.
+   * Renvoie le score du boss actuelle selon le nombre de tentative et ajoute ce score au jeu
    * @returns {int}
    */
   addScore() {
-    this.#score += 1;
+    let $score = 0;
+    if (this.#nbTentative == 1) {
+      $score = 25;
+    } else if (this.#nbTentative > 1 && this.#nbTentative <= 5) {
+      $score = 10;
+    } else if (this.#nbTentative > 5 && this.#nbTentative <= 10) {
+      $score = 5;
+    } else {
+      $score = 1;
+    }
+    this.#score += $score;
+    return $score;
+  }
+
+      /**
+   * Retourne le nombre de tentative du joueur.
+   * @returns {int}
+   */
+  getNbTentative() {
+    return this.#nbTentative;
+  }
+
+      /**
+   * Augmente le nombre de tentative effectuer par le joueur.
+   * 
+   */
+  addNbTentative() {
+    this.#nbTentative += 1;
+  }
+
+        /**
+   * Reset le nombre de tentative effectuer par le joueur.
+   * 
+   */
+  resetNbTentative() {
+    this.#nbTentative = 0;
   }
 
 }
